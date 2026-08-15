@@ -1,0 +1,155 @@
+schema_version: 1
+name: gl10m-66
+classes:
+  - tennis
+  - skate_park
+  - american_football
+  - swimming_pool
+  - golf_course
+  - baseball_field
+  - stadium
+  - roundabout
+  - airport
+  - port
+  - railway_station
+  - runway
+  - airport_hangar
+  - airport_terminal
+  - helipad
+  - dam
+  - electric_substation
+  - shipyard
+  - solar_farm
+  - wind_farm
+  - surface_mine
+  - waste_disposal
+  - water_treatment_facility
+  - marina
+  - beach
+  - parking_garage
+  - parking_lot
+  - soccer
+  - farmland
+  - forest
+  - lake
+  - wetland
+  - park
+  - river
+  - desert
+  - meadow
+  - bareland
+  - chaparral
+  - industrial
+  - aquaculture
+  - construction_site
+  - nature_reserve
+  - school
+  - university
+  - hospital
+  - supermarket
+  - shopping_mall
+  - warehouse
+  - office
+  - religious_building
+  - fire_station
+  - police_station
+  - prison
+  - gas_station
+  - barn
+  - car_dealership
+  - railroad
+  - highway
+  - overpass
+  - viaduct
+  - tower
+  - toll_booth
+  - tunnel_opening
+  - pond
+  - sand
+  - cemetery
+regions:
+  california: {display_name: California, geofabrik_slug: california, footprint_slug: ca, sample_target: 35000, sentinel_footprint: true, naip_footprint: true}
+  texas: {display_name: Texas, geofabrik_slug: texas, footprint_slug: tx, sample_target: 34000, sentinel_footprint: false, naip_footprint: false}
+  florida: {display_name: Florida, geofabrik_slug: florida, footprint_slug: fl, sample_target: 29000, sentinel_footprint: false, naip_footprint: false}
+  washington: {display_name: Washington, geofabrik_slug: washington, footprint_slug: wa, sample_target: 20947, sentinel_footprint: false, naip_footprint: true}
+  illinois: {display_name: Illinois, geofabrik_slug: illinois, footprint_slug: il, sample_target: 24330, sentinel_footprint: false, naip_footprint: false}
+  pennsylvania: {display_name: Pennsylvania, geofabrik_slug: pennsylvania, footprint_slug: pa, sample_target: 25000, sentinel_footprint: false, naip_footprint: true}
+  north-carolina: {display_name: North Carolina, geofabrik_slug: north-carolina, footprint_slug: nc, sample_target: 24000, sentinel_footprint: false, naip_footprint: false}
+  georgia: {display_name: Georgia, geofabrik_slug: georgia, footprint_slug: ga, sample_target: 24973, sentinel_footprint: false, naip_footprint: false}
+  colorado: {display_name: Colorado, geofabrik_slug: colorado, footprint_slug: co, sample_target: 28000, sentinel_footprint: true, naip_footprint: false}
+  arizona: {display_name: Arizona, geofabrik_slug: arizona, footprint_slug: az, sample_target: 14000, sentinel_footprint: false, naip_footprint: false}
+  maine: {display_name: Maine, geofabrik_slug: maine, footprint_slug: me, sample_target: 14000, sentinel_footprint: false, naip_footprint: false}
+osm:
+  url_template: https://download.geofabrik.de/north-america/us/{slug}-latest.osm.pbf
+  tag_keys:
+    - leisure
+    - sport
+    - landuse
+    - natural
+    - water
+    - waterway
+    - wetland
+    - amenity
+    - shop
+    - building
+    - healthcare
+    - highway
+    - railway
+    - public_transport
+    - junction
+    - aeroway
+    - bridge
+    - tunnel
+    - barrier
+    - parking
+    - man_made
+    - industrial
+    - power
+    - plant:source
+    - generator:source
+    - generator:method
+    - harbour
+    - mooring
+    - aquaculture
+  halfwidth: 0.0012
+  halfwidth_unit: degrees
+  sentinel_scale: 10
+  num_tiles: 10
+  min_num_classes: 2
+  coverage_min: 0.0
+  min_center_spacing_degrees: 0.01
+  max_centers_per_cell: 1
+  grid_rounding: floor
+  sentinel_footprint_predicate: covers
+imagery:
+  sentinel_collection: COPERNICUS/S2_SR_HARMONIZED
+  sentinel_footprint_geometry_mode: bounds
+  sentinel_footprint_max_error_m: 500.0
+  sentinel_start: 2023-01-01
+  sentinel_end: 2023-12-31
+  sentinel_cloud_percentage: 2
+  sentinel_time_pad_days: 183
+  sentinel_bands: [B4, B3, B2]
+  sentinel_min: 0.0
+  sentinel_max: 0.3
+  naip_collection: USDA/NAIP/DOQQ
+  naip_footprint_geometry_mode: bounds
+  naip_footprint_max_error_m: 1000.0
+  naip_footprint_start: 2018-01-01
+  naip_footprint_end: 2024-04-01
+  naip_start: 2022-01-01
+  naip_end: 2024-04-01
+  naip_primary_bands: [R, G, B]
+  naip_fallback_bands: [N, G, R]
+  lr_pixels: 268
+  hr_tile_pixels: 268
+  grid_size: 10
+  black_ratio_threshold: 0.25
+  black_pixel_threshold: 5
+  black_pixel_mode: all_channels
+split:
+  train_regions: [california, texas, florida, washington, illinois, pennsylvania, north-carolina, georgia]
+  valid_regions: [colorado]
+  test_regions: [arizona, maine]
+  seed: 42
+  max_labels: 30

@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "crossso"
+version = "4.0.0"
+description = "Data preparation utilities for CrossSO"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+dependencies = [
+  "earthengine-api>=1.5",
+  "numpy>=1.26",
+  "osmium>=4.0",
+  "pandas>=2.0",
+  "pillow>=10.0",
+  "pyyaml>=6.0",
+  "shapely>=2.0",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"crossso.data_prep.profiles" = ["*.yaml"]
