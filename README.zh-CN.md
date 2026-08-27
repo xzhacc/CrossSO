@@ -17,14 +17,12 @@ CrossSO 通过低分辨率全局观测、稀疏高分辨率采样和跨区域表
 - **[2026/08/27]** CrossSO 权重已发布至 [Hugging Face](https://huggingface.co/xiehaoai/CrossSO)。
 - **[2026/08/25]** 新增评测代码和示例 notebook。
 - **[2026/08/15]** 发布中英文 README 和 GL-10M 数据准备工具。
-- **[2026/04/13]** CrossSO 发布至 arXiv。
 
 ## 数据集
 
 - **Sentinel-2/NAIP**：[Scale-Aware Recognition](https://github.com/ShreelekhaR/scale-aware)
 - **EuroSAT**：[官方仓库](https://github.com/phelber/EuroSAT)；[Hugging Face 镜像](https://huggingface.co/datasets/torchgeo/eurosat)
 - **BigEarthNet**：[官方存档](https://zenodo.org/records/12687186)；[RGB 数据集](https://huggingface.co/datasets/danielz01/BigEarthNet-S2-v1.0)
-- **GL-10M**：即将发布至 Hugging Face
 
 CrossSO 权重已发布至 [Hugging Face](https://huggingface.co/xiehaoai/CrossSO)。
 
