@@ -1,0 +1,27 @@
+paths:
+  cache_root: outputs/cache
+  gl10m_config: configs/gl10m.yaml
+  data_root: data/sentinel2-naip
+  checkpoint: weights/vision_language_predictor.safetensors
+  checkpoint_router: weights/router.safetensors
+  dinov2_source: weights/dinov2-with-registers-base
+  clip_text_source: weights/clip-vit-base-patch32
+
+model:
+  image_size: 260
+  hidden_dim: 768
+  tile_pool_k: 4
+  lr_tile_k: 2
+  layers: 12
+  head_dim: 64
+  mlp_ratio: 4.0
+  dropout: 0.05
+
+router:
+  image_size: 280
+
+scoring:
+  hr_residual_gain: 0.075
+
+protocol:
+  prompt_template: "A high-resolution remote sensing image containing {labels}."

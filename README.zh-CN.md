@@ -12,6 +12,13 @@ CrossSO 通过低分辨率全局观测、稀疏高分辨率采样和跨区域表
   <img src="assets/framework.png" width="100%" alt="CrossSO 框架">
 </p>
 
+## 最新动态
+
+- **[2026/08/27]** CrossSO 权重已发布至 [Hugging Face](https://huggingface.co/xiehaoai/CrossSO)。
+- **[2026/08/25]** 新增评测代码和示例 notebook。
+- **[2026/08/15]** 发布中英文 README 和 GL-10M 数据准备工具。
+- **[2026/04/13]** CrossSO 发布至 arXiv。
+
 ## 数据集
 
 - **Sentinel-2/NAIP**：[Scale-Aware Recognition](https://github.com/ShreelekhaR/scale-aware)
@@ -19,7 +26,7 @@ CrossSO 通过低分辨率全局观测、稀疏高分辨率采样和跨区域表
 - **BigEarthNet**：[官方存档](https://zenodo.org/records/12687186)；[RGB 数据集](https://huggingface.co/datasets/danielz01/BigEarthNet-S2-v1.0)
 - **GL-10M**：即将发布至 Hugging Face
 
-CrossSO 权重即将发布至 Hugging Face。
+CrossSO 权重已发布至 [Hugging Face](https://huggingface.co/xiehaoai/CrossSO)。
 
 ## GL-10M 数据准备
 
@@ -29,11 +36,28 @@ earthengine authenticate
 python tools/prepare_gl10m.py --help
 ```
 
+## 评测
+
+```bash
+pip install -e ".[eval]"
+python tools/evaluate.py --help
+```
+
+评测路径见 `configs/`。本次更新包含 zero-shot retrieval、EuroSAT/BigEarthNet transfer 和 GL-10M evaluation。
+
+## 示例
+
+见 [`notebooks/crossso-method-demo.ipynb`](notebooks/crossso-method-demo.ipynb)。
+
 ## 许可证
 
 <a href="https://creativecommons.org/licenses/by/4.0/"><img src="assets/cc-by.png" alt="CC BY 4.0" width="88"></a>
 
-本项目采用[知识共享署名 4.0 国际许可协议](LICENSE)。第三方数据集遵循各自来源的许可协议。
+本项目采用[知识共享署名 4.0 国际许可协议](LICENSE)。第三方数据集与预训练模型遵循各自来源的许可协议。
+
+## 致谢
+
+感谢 [OpenStreetMap](https://www.openstreetmap.org/copyright) 贡献者提供地理数据与标注，感谢 [Google Earth Engine](https://earthengine.google.com/) 和 [Geofabrik](https://download.geofabrik.de/) 提供数据访问支持，并感谢 [GRAFT](https://graft.cs.cornell.edu/) 团队提供模型与相关资源。
 
 ## 引用
 

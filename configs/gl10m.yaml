@@ -1,0 +1,80 @@
+dataset:
+  split_csv: data/gl10m/test_loc.csv
+  image_root: data/gl10m
+  class_names:
+    - tennis
+    - skate park
+    - american football
+    - swimming pool
+    - golf course
+    - baseball field
+    - stadium
+    - roundabout
+    - airport
+    - port
+    - railway station
+    - runway
+    - airport hangar
+    - airport terminal
+    - helipad
+    - dam
+    - electric substation
+    - shipyard
+    - solar farm
+    - wind farm
+    - surface mine
+    - waste disposal
+    - water treatment facility
+    - marina
+    - beach
+    - parking garage
+    - parking lot
+    - soccer
+    - farmland
+    - forest
+    - lake
+    - wetland
+    - park
+    - river
+    - desert
+    - meadow
+    - bareland
+    - chaparral
+    - industrial
+    - aquaculture
+    - construction site
+    - nature reserve
+    - school
+    - university
+    - hospital
+    - supermarket
+    - shopping mall
+    - warehouse
+    - office
+    - religious building
+    - fire station
+    - police station
+    - prison
+    - gas station
+    - barn
+    - car dealership
+    - railroad
+    - highway
+    - overpass
+    - viaduct
+    - tower
+    - toll booth
+    - tunnel opening
+    - pond
+    - sand
+    - cemetery
+
+observation:
+  topk: 12
+
+text:
+  template: "A high-resolution remote sensing image containing {labels}."
+
+evaluation:
+  config: configs/zero.yaml
+  report: outputs/gl10m.json

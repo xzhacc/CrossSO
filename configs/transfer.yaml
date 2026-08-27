@@ -1,0 +1,128 @@
+model: &model
+  graft_checkpoint: weights/graft_sentinel.ckpt
+  clip_model: weights/clip-vit-base-patch16
+
+cross_scale_fusion: &cross_scale_fusion
+  graft_naip_checkpoint: weights/graft_naip.ckpt
+  predictor_checkpoint: weights/feature_predictor.safetensors
+  input_group: graft
+  output_group: ours_graft_anchor
+  predictor_pool: raw_feature_max
+  normalization: row_zscore
+  weight: 0.35
+
+profiles:
+  eurosat:
+    dataset:
+      kind: eurosat
+      task: single-label-classification
+      split_file: data/eurosat/eurosat-val.txt
+      image_root: data/eurosat/2750
+      samples: 5400
+      class_directories:
+        - AnnualCrop
+        - Forest
+        - HerbaceousVegetation
+        - Highway
+        - Industrial
+        - Pasture
+        - PermanentCrop
+        - Residential
+        - River
+        - SeaLake
+    model: *model
+    cross_scale_fusion: *cross_scale_fusion
+    preprocess:
+      padding: 80
+      mean: [0.48145466, 0.4578275, 0.40821073]
+      std: [0.26862954, 0.26130258, 0.27577711]
+    text:
+      class_names:
+        - AnnualCrop
+        - Forest
+        - HerbaceousVegetation
+        - Highway
+        - Industrial
+        - Pasture
+        - PermanentCrop
+        - Residential
+        - River
+        - SeaLake
+      primary_group: ours_graft_anchor
+      prompt_groups:
+        graft:
+          - "A satellite image of {label}"
+    runtime:
+      fusion_batch_size: 4
+      workers: 8
+    artifacts:
+      predictions: outputs/transfer/eurosat/predictions.pt
+      report: outputs/transfer/eurosat/report.json
+
+  bigearthnet:
+    dataset:
+      kind: bigearthnet
+      task: multi-label-retrieval
+      parquet_root: data/bigearthnet/s2-rgb
+      parquet_glob: test-*.parquet
+      image_column: img
+      label_column: labels
+      samples: 125866
+      label_groups:
+        - [Continuous urban fabric, Discontinuous urban fabric]
+        - [Industrial or commercial units]
+        - [Non-irrigated arable land, Permanently irrigated land, Rice fields]
+        - [Vineyards, Fruit trees and berry plantations, Olive groves, Annual crops associated with permanent crops]
+        - [Pastures]
+        - [Complex cultivation patterns]
+        - ["Land principally occupied by agriculture, with significant areas of natural vegetation"]
+        - [Agro-forestry areas]
+        - [Broad-leaved forest]
+        - [Coniferous forest]
+        - [Mixed forest]
+        - [Natural grassland, Sparsely vegetated areas]
+        - [Moors and heathland, Sclerophyllous vegetation]
+        - [Transitional woodland/shrub]
+        - ["Beaches, dunes, sands"]
+        - [Inland marshes, Peatbogs]
+        - [Salt marshes, Salines]
+        - [Water courses, Water bodies]
+        - [Coastal lagoons, Estuaries, Sea and ocean]
+    model: *model
+    cross_scale_fusion: *cross_scale_fusion
+    preprocess:
+      padding: 52
+      mean: [0.48145466, 0.4578275, 0.40821073]
+      std: [0.26862954, 0.26130258, 0.27577711]
+    text:
+      class_names:
+        - urban fabric
+        - industrial or commercial units
+        - arable land
+        - permanent crops
+        - pastures
+        - complex cultivation patterns
+        - land principally occupied by agriculture with significant areas of natural vegetation
+        - agro-forestry areas
+        - broad-leaved forest
+        - coniferous forest
+        - mixed forest
+        - natural grassland and sparsely vegetated areas
+        - moors, heathland and sclerophyllous vegetation
+        - transitional woodland and shrub
+        - beaches, dunes and sands
+        - inland wetlands
+        - coastal wetlands
+        - inland waters
+        - marine waters
+      primary_group: ours_graft_anchor
+      prompt_groups:
+        graft:
+          - "A satellite image of {label}"
+    runtime:
+      batch_size: 128
+      fusion_batch_size: 128
+      workers: 0
+    artifacts:
+      predictions: outputs/transfer/bigearthnet/predictions.pt
+      report: outputs/transfer/bigearthnet/report.json
