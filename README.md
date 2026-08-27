@@ -24,8 +24,6 @@ CrossSO combines global low-resolution observations, sparse high-resolution samp
 - **EuroSAT**: [official repository](https://github.com/phelber/EuroSAT); [Hugging Face mirror](https://huggingface.co/datasets/torchgeo/eurosat)
 - **BigEarthNet**: [official archive](https://zenodo.org/records/12687186); [RGB dataset](https://huggingface.co/datasets/danielz01/BigEarthNet-S2-v1.0)
 
-CrossSO weights are available on [Hugging Face](https://huggingface.co/xiehaoai/CrossSO).
-
 ## GL-10M Data Preparation
 
 ```bash
