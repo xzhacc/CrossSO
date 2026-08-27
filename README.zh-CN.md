@@ -24,8 +24,6 @@ CrossSO 通过低分辨率全局观测、稀疏高分辨率采样和跨区域表
 - **EuroSAT**：[官方仓库](https://github.com/phelber/EuroSAT)；[Hugging Face 镜像](https://huggingface.co/datasets/torchgeo/eurosat)
 - **BigEarthNet**：[官方存档](https://zenodo.org/records/12687186)；[RGB 数据集](https://huggingface.co/datasets/danielz01/BigEarthNet-S2-v1.0)
 
-CrossSO 权重已发布至 [Hugging Face](https://huggingface.co/xiehaoai/CrossSO)。
-
 ## GL-10M 数据准备
 
 ```bash
