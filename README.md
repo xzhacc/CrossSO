@@ -17,14 +17,12 @@ CrossSO combines global low-resolution observations, sparse high-resolution samp
 - **[2026/08/27]** CrossSO weights are released on [Hugging Face](https://huggingface.co/xiehaoai/CrossSO).
 - **[2026/08/25]** Evaluation code and the demo notebook are added.
 - **[2026/08/15]** The bilingual README and GL-10M data-preparation tools are released.
-- **[2026/04/13]** CrossSO is available on arXiv.
 
 ## Datasets
 
 - **Sentinel-2/NAIP**: [Scale-Aware Recognition](https://github.com/ShreelekhaR/scale-aware)
 - **EuroSAT**: [official repository](https://github.com/phelber/EuroSAT); [Hugging Face mirror](https://huggingface.co/datasets/torchgeo/eurosat)
 - **BigEarthNet**: [official archive](https://zenodo.org/records/12687186); [RGB dataset](https://huggingface.co/datasets/danielz01/BigEarthNet-S2-v1.0)
-- **GL-10M**: coming soon on Hugging Face
 
 CrossSO weights are available on [Hugging Face](https://huggingface.co/xiehaoai/CrossSO).
 
